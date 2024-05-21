@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_application_1/my_home_page.dart';
+import 'package:flutter_application_1/counter_cubit.dart';
 import 'theme_inherited_widget.dart';
 import 'themes.dart';
 
@@ -31,7 +33,10 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: 'Flutter Theme Demo',
             theme: ThemeInheritedWidget.of(context)?.theme,
-            home: MyHomePage(),
+            home: BlocProvider(
+              create: (_) => CounterCubit(),
+              child: MyHomePage(),
+            ),
           );
         },
       ),
